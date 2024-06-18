@@ -1,0 +1,3 @@
+Motivasi saya mengiikuti bootcamp ini agar dapat menguasai setidaknya dasar dasar 
+pengembangan web dengan laravel dan bagaimana mengelola direktori 
+dengan menggunakan git ecosystem
