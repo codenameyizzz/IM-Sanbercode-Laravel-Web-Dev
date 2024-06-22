@@ -1,0 +1,77 @@
+1. Buat Database
+-- CREATE DATABASE myshop;
+
+2. Buat Table
+-- CREATE TABLE users (
+    id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    email VARCHAR(255),
+    password VARCHAR(255)
+);
+
+-- CREATE TABLE categories (
+    id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255)
+);
+
+-- CREATE TABLE items (
+    id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    description VARCHAR(255),
+    price INTEGER,
+    stock INTEGER,
+    category_id INTEGER,
+    FOREIGN KEY (category_id) REFERENCES categories(id)
+);
+
+3. Masukan Data Kedalam Tabel
+-- Insert data ke dalam tabel users
+INSERT INTO users (name, email, password) VALUES 
+('John Doe', 'john@doe.com', 'john123'),
+('Jane Doe', 'jane@doe.com', 'jenita123');
+
+-- Insert data ke dalam tabel categories
+INSERT INTO categories (name) VALUES 
+('gadget'),
+('cloth'),
+('men'),
+('women'),
+('branded');
+
+-- Insert data ke dalam tabel items
+INSERT INTO items (name, description, price, stock, category_id) VALUES 
+('Sumsang b50', 'hape keren dari merek sumsang', 4000000, 100, 1),
+('Uniklooh', 'baju keren dari brand ternama', 500000, 50, 2),
+('IMHO Watch', 'jam tangan anak yang jujur banget', 2000000, 10, 1);
+
+4. Mengambil Data dari Database
+-- Mengambil Data Users
+SELECT id, name, email FROM users;
+
+-- Mengambil data item dengan harga di atas 1.000.000
+SELECT * FROM items WHERE price > 1000000;
+
+-- Mengambil data item dengan name mirip dengan "uniklo"
+SELECT * FROM items WHERE name LIKE '%uniklo%';
+
+-- Join Data Item x Kategori
+SELECT 
+    items.name, 
+    items.description, 
+    items.price, 
+    items.stock, 
+    items.category_id, 
+    categories.name AS kategori
+FROM 
+    items
+JOIN 
+    categories
+ON 
+    items.category_id = categories.id;
+
+5. Update Data Dalam Table
+UPDATE items
+SET price = 2500000
+WHERE name = 'Sumsang b50';
+
+
